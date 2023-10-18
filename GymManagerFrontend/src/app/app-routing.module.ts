@@ -7,14 +7,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { InitHomeComponent } from './share/init-home/init-home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'/init-home', pathMatch: 'full'},
+  {path: '', redirectTo:'/home', pathMatch: 'full'},
   {path: '', component: InitLayoutComponent, children:[
     { path: 'sign-in', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule) },
     { path: 'sign-up', loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpModule) },
   
   ]},
   {path: '', component: AdminLayoutComponent, children:[
-    { path: 'inventory', loadChildren: () => import('./pages/inventory/inventory.module').then(m => m.InventoryModule) , canActivate:[HasSessionGuard] },
     { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), canActivate:[HasSessionGuard] },
     { path: 'users', loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule) ,canActivate:[HasSessionGuard] },
     { path: 'not-found', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },

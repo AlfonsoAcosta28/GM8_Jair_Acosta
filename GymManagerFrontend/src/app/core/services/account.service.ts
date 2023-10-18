@@ -26,7 +26,7 @@ export class AccountService {
   }
   
   getUsers(){
-    let url: string = `${this.urlBase}api/User`;
+    let url: string = `${this.urlBase}api/Users`;
     return this.http.get<ResponseArrayModel<User>>(url, this.httpOptions).pipe(catchError(this.errorHandler))
   }
 

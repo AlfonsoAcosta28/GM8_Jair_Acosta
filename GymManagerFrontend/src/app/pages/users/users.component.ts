@@ -17,12 +17,11 @@ import { AccountService } from 'src/app/core/services/account.service';
 export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = [
+    'userName',
     'email', 
-    'firstName',
-    'lastName', 
     'phoneNumber',
-    'status',
-    'delete'
+    'edit',
+    'delete',
   ];
   dataSource!: MatTableDataSource<User>;
 
@@ -56,16 +55,11 @@ export class UsersComponent implements OnInit {
   }
   loadData() {
     this.usersSubscription = this.accountService.getUsers().subscribe(response =>{
-      let usersActive: User[] = []
-      response.model.forEach(element => {
-        // if(element.status){
-        //   usersActive.push(element)
-        // }
-      });
-      this.dataSource = new _MatTableDataSource(usersActive)
+     
+      this.dataSource = new _MatTableDataSource(response.model)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.usersData = usersActive
+      this.usersData = response.model
     })
   }
 
