@@ -1,0 +1,24 @@
+//@import "~bootstrap/dist/css/bootstrap.css";
+@import "./node_modules/bootstrap/scss/bootstrap";    
+@import "./node_modules/bootstrap/scss/functions";    
+@import "./node_modules/bootstrap/scss/variables";   
+@import "./node_modules/bootstrap/scss/mixins";      
+@import "./node_modules/bootstrap/scss/grid";  
+@import "./node_modules/bootstrap/scss/navbar"; 
+@import "./node_modules/bootstrap/scss/forms"; 
+
+.bg-custom-1{
+    background-color: #1b2223;
+}
+
+.bg-custom-2{
+    background: #3A4F50;
+}
+
+.bg-custom-3{
+    background-color: #0EF6CC;
+}
+
+.bg-custom-4{
+    background-color: #F4FEFD;
+}

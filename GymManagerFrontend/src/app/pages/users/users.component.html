@@ -1,0 +1,107 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Insert" #input />
+</mat-form-field>
+
+<button mat-stroked-button color="primary" class="mx-4" (click)="openNewUser()">
+  New User
+</button>
+<button mat-stroked-button color="primary" class="mx-4" (click)="changeView()">
+  {{ showTable ? "Go to Card View" : "Go to Table View" }}
+</button>
+
+<div class="mat-elevation-z8" *ngIf="showTable; else showCards">
+  <table mat-table [dataSource]="dataSource" matSort aria-hidden="true">
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row" (click)="openModal(row)">
+        {{ row.firstName }}
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
+          {{ row.lastName }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+        <td mat-cell *matCellDef="let row">{{ row.phoneNumber }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        
+        <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+        
+      </ng-container>
+      
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>DELETE</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="warn" (click)="eliminarUsuario(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>
+
+<!-- Modal -->
+<app-user-editor
+  *ngIf="rowSelected || newUser"
+  [row]="rowSelected"
+  (closeModalEvent)="onCloseHandled($event)"
+></app-user-editor>
+
+<app-delete-user *ngIf="deleteRowSelected" [row]="deleteRowSelected"
+(closeModalEvent)="onCloseHandled($event)">
+</app-delete-user>
+
+<ng-template #showCards>
+  <div class="row">
+    <div class="col-md-3 py-3" *ngFor="let user of usersData">
+      <div class="card text-center">
+        <div class="card-header">
+          <strong> {{ getIniciales(user) }} </strong>- {{ user.firstName }}
+          {{ user.lastName }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ user.email }}</h5>
+          <p class="card-text">{{ user.phoneNumber }}</p>
+        </div>
+        <div class="card-footer text-body-secondary">
+          {{ user.status ? "Activo" : "Inactivo" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="row">
+  <ng-container *ngFor="let user of usersData">
+    <app-basic-card class="col-md-3 py-3" [UserData]="user"></app-basic-card>
+  </ng-container>
+</div>

@@ -1,0 +1,54 @@
+<ng-container [ngSwitch]="card.typeCard">
+  <ng-container *ngSwitchCase="'basic1'">
+    <div class="card text-center">
+      <div
+        class="card-header text-truncate"
+        *ngIf="!!card.header"
+        [ngClass]="!!card.header.titleClass ? card.header.titleClass : ''"
+      >
+        <!-- Title -->
+        <strong *ngIf="!!card.header.siglas"> {{ card.header.siglas }} </strong
+        >- {{ getArrayToText(card.header.title) }}
+      </div>
+      <div class="card-body">
+        <!-- Description -->
+        <h4 class="card-title"
+          [ngClass]="!!card.body.title ? card.body.title : ''" *ngIf="!!card.body.title">
+          {{ UserData[card.body.title] }}
+        </h4>
+        <h4
+          class="card-title"
+          [ngClass]="!!card.body.descClass ? card.body.descClass : ''" >
+          {{ UserData[card.body.desc] }}
+        </h4>
+        <p
+          class="card-text"
+          [ngClass]="!!card.body.subDescClass ? card.body.subDescClass : ''"
+          *ngIf="!!card.body.subDesc"
+        >
+          {{ UserData[card.body.subDesc] }}
+        </p>
+      </div>
+      <div class="card-footer text-body-secondary">
+        <div *ngIf="card.footer.footerType == 'label'; else btnFooter"
+        [ngClass]="!!card.footer.footerClass ? card.footer.footerClass : ''">
+          {{ UserData[card.footer.label] }}
+        </div>
+        <ng-template #btnFooter>
+          <button mat-button
+            [ngClass]="!!card.footer.footerClass ? card.footer.footerClass : ''"
+            color="primary">
+            {{ UserData[card.footer.label] }}
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <div class="card text-center">
+      <div class="card-body">
+        <div class="card-title">Tarjeta no configurada</div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

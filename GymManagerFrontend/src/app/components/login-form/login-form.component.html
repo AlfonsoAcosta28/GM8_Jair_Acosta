@@ -1,0 +1,45 @@
+<form  [formGroup]="formUser" (ngSubmit)="onSubmitForm()">
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+
+    <div class="row" *ngIf="isSignUp == true">
+      
+    <mat-form-field appearance="outline" class="col-md-6 mb-4">
+      <mat-label>Firt Name</mat-label>
+      <input matInput placeholder="Insert your Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-md-6 mb-4">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Insert your Last Name" formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+      <mat-label>Phone Number</mat-label>
+      <input type="number" matInput placeholder="Insert your Phone Number" formControlName="phoneNumber">
+    </mat-form-field>
+    </div>
+
+    <!-- Email input -->
+    <mat-form-field appearance="outline" class="col-md-12 mb-4" *ngIf="!dataUser">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="email@examle.com" formControlName="email">
+    </mat-form-field>
+    <!-- Password input -->
+    <mat-form-field appearance="outline" class="col-md-12 mb-4"  *ngIf="!dataUser">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" >
+    </mat-form-field>
+
+    <!-- Submit button -->
+    <!-- <button type="submit" class="btn btn-primary btn-block mb-4">
+      Sign up
+    </button> -->
+    <div class="d-flex justify-content-center">
+      <button mat-raised-button class="col-md-6 mx-2" *ngIf="hasSession" (click)="cancelBtn()">Cancelar</button>
+      <button type="submit" mat-raised-button [ngClass]="{'col-md-12': !hasSession, 'col-md-6': hasSession}" color="primary" 
+      [disabled]="formUser.invalid" class="mx-2">
+        {{confirmButtonText}}
+      </button>
+
+
+    </div>
+  </form>

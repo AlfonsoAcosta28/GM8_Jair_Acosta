@@ -1,0 +1,14 @@
+
+
+    <div class="sidebar">
+        <a [routerLink]="['/home']"><i class="fa fa-fw fa-home"></i><span>Home</span></a>
+        <a [routerLink]="['/inventory']"><i class="fa fa-fw fa-wrench"></i><span>Productos</span></a>
+        <a [routerLink]="['/users']"><i class="fa fa-fw fa-user"></i><span></span>Users</a>
+        <a (click)="singOut()"><i class="fa-solid fa-arrow-right-from-bracket"></i><span></span> Sign Out</a>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
