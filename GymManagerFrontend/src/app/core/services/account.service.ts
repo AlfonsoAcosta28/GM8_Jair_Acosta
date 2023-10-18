@@ -10,7 +10,7 @@ import { ResponseArrayModel, ResponseModel } from '../interfaces/response-model'
 })
 export class AccountService {
 
-  urlBase:string ='https://localhost:44360/';
+  urlBase:string ='https://localhost:7025/';
 
   httpOptions = {
     headers:new HttpHeaders({
@@ -31,12 +31,16 @@ export class AccountService {
   }
 
   SingIn(request:signIn): Observable<ResponseModel<any>>{
-    let url : string = `${this.urlBase}api/account`;
+   
+    console.log("Respuesta ",request)
+    
+    let url : string = `${this.urlBase}api/Account`;
     return this.http.post<ResponseModel<any>>(url, request, this.httpOptions).pipe(catchError(this.errorHandler));    
   }
   
   SingUp(request:User): Observable<ResponseModel<any>>{
-    let url : string = `${this.urlBase}api/User`;
+    console.log(request)
+    let url : string = `${this.urlBase}api/Users`;
     return this.http.post<ResponseModel<any>>(url, request, this.httpOptions).pipe(catchError(this.errorHandler));    
   }
 
