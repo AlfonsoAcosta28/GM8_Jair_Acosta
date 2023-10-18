@@ -81,7 +81,7 @@ export class LoginFormComponent implements OnChanges {
     this.formUser = this.fb.group(usersFields);
     if (this.dataUser) {
       this.formUser.removeControl('password');
-      this.formUser.removeControl('email');
+      // this.formUser.removeControl('email');
     }
   }
 

@@ -9,5 +9,6 @@ export class NavbarComponent {
   hasSession = environment.hasSession;
 
   
+  @Input() initHome!: boolean;
   @Input() home!: boolean;
 }
