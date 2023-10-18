@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
-import { signIn } from 'src/app/core/interfaces/user';
+import { User, signIn } from 'src/app/core/interfaces/user';
 import { AccountService } from 'src/app/core/services/account.service';
 import { SwalAlertService } from 'src/app/core/services/swal-alert.service';
 import { environment } from 'src/environments/environment';
@@ -18,9 +18,13 @@ export class SignInComponent {
     private cookie: CookieService){
   }
 
-  respForm(request: signIn){
-    
-    this.login.SingIn(request).subscribe(respose =>{
+  respForm(request: User){
+    let resp: signIn = {
+      userName: request.email,
+      password: request.password
+    };
+    // console.log("Salida", request)
+    this.login.SingIn(resp).subscribe(respose =>{
     
       if(respose.hasError){
         this.alertS.errorAlert("Incorrect username and/or password")

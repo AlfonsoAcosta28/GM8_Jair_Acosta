@@ -1,0 +1,16 @@
+/* Estilo para hacer que el botón parezca un enlace */
+.button-link {
+    background: none;
+    border: none;
+    color: blue; /* Cambia el color a tu preferencia */
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+  }
+  
+  /* Estilo para quitar el borde al hacer clic en el botón */
+  .button-link:focus {
+    outline: none;
+  }
+  

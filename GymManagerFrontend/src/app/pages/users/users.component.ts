@@ -58,9 +58,9 @@ export class UsersComponent implements OnInit {
     this.usersSubscription = this.accountService.getUsers().subscribe(response =>{
       let usersActive: User[] = []
       response.model.forEach(element => {
-        if(element.status){
-          usersActive.push(element)
-        }
+        // if(element.status){
+        //   usersActive.push(element)
+        // }
       });
       this.dataSource = new _MatTableDataSource(usersActive)
       this.dataSource.paginator = this.paginator;
@@ -108,9 +108,9 @@ export class UsersComponent implements OnInit {
     this.showTable = !this.showTable
   }
 
-  getIniciales(user: User){
-    return ((user.firstName).charAt(0) + (user.lastName).charAt(0)).toUpperCase()
-  }
+  // getIniciales(user: User){
+  //   return ((user.firstName).charAt(0) + (user.lastName).charAt(0)).toUpperCase()
+  // }
 
   eliminarUsuario(user:User){
     // this.deleteUser = true

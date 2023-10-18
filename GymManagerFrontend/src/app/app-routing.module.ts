@@ -15,9 +15,7 @@ const routes: Routes = [
     { path: 'inventory', loadChildren: () => import('./pages/inventory/inventory.module').then(m => m.InventoryModule) , canActivate:[HasSessionGuard] },
     { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), canActivate:[HasSessionGuard] },
     { path: 'users', loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule) ,canActivate:[HasSessionGuard] },
-    { path: 'about-me', loadChildren: () => import('./pages/about-me/about-me.module').then(m => m.AboutMeModule)},
     { path: 'not-found', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
-    { path: 'send-email', loadChildren: () => import('./pages/send-email/send-email.module').then(m => m.SendEmailModule) },
   ]},
   {path: '**', redirectTo:'/not-found', pathMatch: 'full'},
 ];

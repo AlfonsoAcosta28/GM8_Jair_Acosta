@@ -14,9 +14,8 @@ export class SignUpComponent {
   }
 
   respForm(response:User){
-
-    let request = {...response, status:true}
-    console.log("Respuesta sign up ",request);
-    this.login.SingUp(request).subscribe(() => this.router.navigate(['/sign-in']));
+    console.log("Respuesta sign up ",response);
+    
+    this.login.SingUp(response).subscribe(() => this.router.navigate(['/sign-in']));
   }
 }

@@ -2,15 +2,15 @@ export interface User {
     id?:string;
     email: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    userName: string;
+    // lastName: string;
     phoneNumber: string;
-    status: boolean;
+    // status: boolean;
 }
 
 
 export interface signIn{
-    email: string;
+    userName: string;
     password: string;
 }
 
