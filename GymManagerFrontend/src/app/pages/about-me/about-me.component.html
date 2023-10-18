@@ -1,0 +1,57 @@
+<body class="" data-bs-target="#navbar" data-bs-spy="scroll">
+  
+  <div class="">
+    <nav id="navbar" class="navbar navbar-light bg-light px-3 fixed-top">
+      <a href="#!  " class="navbar-brand">Navbar</a>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#scrollspy1" class="nav-link">Item 1</a></li>
+  
+        <li class="nav-item"><a href="#scrollspy2" class="nav-link">Item 2</a></li>
+  
+        <li class="nav-item"><a href="#scrollspy3" class="nav-link">Item 3</a></li>
+      </ul>
+    </nav>
+    
+    <div class="scrollpsy-example p-5 m-5" tabindex="0">
+        <div class="info1">
+          
+          <h2 id="scrollspy1" class="name">Jair Alfonso Acosta Duran</h2>
+          <div class="foto"></div>
+        <p>Since I was a child one of my favorite hobbies has been music, in my free time I play the
+            piano, and on Saturdays I play in the church.
+            I am currently studying Computer Systems Engineering at the Instituto Tecnologico de Mexico
+            campues Zitacuaro.
+            I am graduate of the carrer of Technician in programming in the CBTIs162.
+            I am in the academy of Angular in Punto singular
+        </p>
+        </div>
+        <h2 id="scrollspy2">My proyects</h2>
+      <div class="slider">
+       <div class="slider-images">
+        <swiper-container speed="100" loop="true" css-mode="true"  navigation="true" pagination="true" scrollbar="true">
+          <swiper-slide><img src="../../../assets/img/swiper1.png" alt="silider1"></swiper-slide>
+          <swiper-slide><img src="../../../assets/img/swiper2.png" alt="silider2"></swiper-slide>
+          <swiper-slide><img src="../../../assets/img/swiper3.png" alt="silider3"></swiper-slide>
+        </swiper-container>
+       </div>
+      </div>
+      <h2 id="scrollspy3">Contact information</h2>
+      <div class="info">
+        <button class="button primary-button" (click)="showInfo()">Mostrar información</button>
+
+<div *ngIf="showDetails" class="contact-details">
+  <p>Correo: {{ email }}</p>
+  <p>Usuario de GitHub: {{ githubUsername }}</p>
+</div>
+
+      </div>
+    </div>
+  </div>
+ 
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+  <!-- <script src="../../../../node_modules/bootstrap/js/"></script> -->
+</body>
