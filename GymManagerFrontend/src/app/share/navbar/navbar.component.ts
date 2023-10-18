@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {environment } from 'src/environments/environment'
 @Component({
   selector: 'app-navbar',
@@ -7,4 +7,7 @@ import {environment } from 'src/environments/environment'
 })
 export class NavbarComponent {
   hasSession = environment.hasSession;
+
+  
+  @Input() home!: boolean;
 }

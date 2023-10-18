@@ -26,7 +26,7 @@ export class HasSessionGuard implements CanActivate{
       dataUser = JSON.parse(atob(session != undefined ? session : ''))
     }
     if(!dataUser?.hasSession){
-      this.router.navigate(['/sign-in'])
+      this.router.navigate(['/init-home'])
     }
     return !!dataUser?.hasSession
     
