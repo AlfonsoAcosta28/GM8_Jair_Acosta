@@ -39,9 +39,9 @@ export class UserEditorComponent implements OnInit{
   }
   respForm(response:User){
 
-    let request = {...response, status:true}
+    // let request = {...response, status:true}
     if(!!this.row && this.row.id != undefined){
-      this.userService.update(request, this.row.id).subscribe((resp)=>{
+      this.userService.update(response, this.row.id).subscribe((resp)=>{
       if(!resp.hasError){
         this.closeModal(true)
       }else{
@@ -50,7 +50,7 @@ export class UserEditorComponent implements OnInit{
       })
       return
     }else{
-      this.userService.SingUp(request).subscribe(resp => {
+      this.userService.SingUp(response).subscribe(resp => {
         if(!resp.hasError){
           this.closeModal(true)
         }else{

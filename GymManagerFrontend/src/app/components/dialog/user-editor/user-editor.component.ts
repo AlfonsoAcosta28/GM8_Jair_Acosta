@@ -23,6 +23,7 @@ export class UserEditorDComponent implements OnInit{
     if(!!this.row){
       this.confirmButtonText = 'Update User'
     }
+    
   }
 
   

@@ -1,40 +1,86 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom-1">
-    <div class="container-fluid">
-      <img src="../../../assets/img/logo2.png" alt="Icono de navegación">
-     
-      <a class="navbar-brand m-2" href="home">GYM MANAGER</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="!hasSession; else withSession">
-          <li class="nav-item" *ngIf="initHome">
-            <a class="nav-link" aria-current="page" [routerLink]="['/sign-in']" >Sign in</a>
-          </li>
-          <li class="nav-item" *ngIf="initHome">
-            <a class="nav-link" [routerLink]="['/sign-up']">Sign up</a>
-          </li>
+  <div class="container-fluid">
+    <img src="../../../assets/img/logo2.png" alt="Icono de navegación" />
 
-          <li class="nav-item dropdown" *ngIf="home">
-            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Administration
+    <a class="navbar-brand m-2" href="home">GYM MANAGER</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0"
+        *ngIf="!hasSession; else withSession"
+      >
+        <li class="nav-item" *ngIf="initHome">
+          <a class="nav-link" aria-current="page" [routerLink]="['/sign-in']"
+            >Sign in</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="initHome">
+          <a class="nav-link" [routerLink]="['/sign-up']">Sign up</a>
+        </li>
+
+        <div *ngIf="home">
+          <button [matMenuTriggerFor]="menuAdministration" class="btn btn-dark">
+            Administration
+          </button>
+          <mat-menu #menuAdministration="matMenu">
+            <button mat-menu-item>
+              <a class="dropdown-item" href="users">Users</a>
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="users">Users</a></li>
-              <li><a class="dropdown-item" href="#">Cities</a></li>
-            </ul>
-          </li>
-        </ul>
-        
-      </div>
-    </div>
-  </nav>
+            <button mat-menu-item>
+              <a class="dropdown-item" href="cities">Cities</a>
+            </button>
+          </mat-menu>
 
-  <ng-template #withSession>
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/sign-up']">Sign out</a>
-      </li>
-    </ul>
-    
-  </ng-template>
+          <button [matMenuTriggerFor]="menuCenter" class="btn btn-dark">
+            Center
+          </button>
+          <mat-menu #menuCenter="matMenu">
+            <button mat-menu-item>
+              <a class="dropdown-item" href="members">Members</a>
+            </button>
+            <button mat-menu-item>
+              <a class="dropdown-item" href="membership-types"
+                >Membership Types</a
+              >
+            </button>
+            <button mat-menu-item>
+              <a class="dropdown-item" href="equipament-type"
+                >Equipment Types</a
+              >
+            </button>
+          </mat-menu>
+
+          <button [matMenuTriggerFor]="menuReports" class="btn btn-dark">
+            Reports
+          </button>
+          <mat-menu #menuReports="matMenu">
+            <button mat-menu-item>
+              <a class="dropdown-item" href="#">New members</a>
+            </button>
+            <button mat-menu-item>
+              <a class="dropdown-item" href="#">Member Assistance</a>
+            </button>
+          </mat-menu>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-template #withSession>
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/sign-up']">Sign out</a>
+    </li>
+  </ul>
+</ng-template>

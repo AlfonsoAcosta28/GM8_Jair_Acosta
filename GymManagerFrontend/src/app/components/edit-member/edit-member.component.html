@@ -1,0 +1,83 @@
+
+<div id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div> -->
+            <div class="modal-body">
+                <form [formGroup]="formUser" (ngSubmit)="responseForm()">
+                    <!-- NAME -->
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" />
+                    </mat-form-field>
+
+                    <!-- LAST NAME -->
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Last Name</mat-label>
+                        <input type="text" matInput formControlName="lastName" />
+                    </mat-form-field>
+
+                    <!-- BIRTH DAY -->
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Birth Day</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="birthDay" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>                    
+
+                    <!-- EMAIL -->
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" />
+                    </mat-form-field>
+                    
+                    <!-- MEMBERSHIP END -->
+                    <!-- <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Membership End</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="membershipEnd" />
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field> -->
+
+                    <mat-checkbox formControlName="allowNewsLetter" appearance="outline" class="col-md-12 mb-4">Allow News Letter</mat-checkbox>
+
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>City</mat-label>
+                        <mat-select formControlName="cityId">
+                          <mat-option *ngFor="let city of cities" [value]="city.id">
+                            {{city.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+
+                    <!-- <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>MembershipType</mat-label>
+                        <input type="text" matInput formControlName="membershipTypeId" />
+                    </mat-form-field> -->
+                    
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Membership Types</mat-label>
+                        <mat-select formControlName="membershipTypeId">
+                          <mat-option *ngFor="let membershipType of membershipTypes" [value]="membershipType.id">
+                            {{membershipType.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                    <div class="d-flex justify-content-center">
+                        <!-- <button mat-raised-button class="col-md-6 mx-2" *ngIf="hasSession" (click)="cancelBtn()">Cancelar</button> -->
+                        <button type="submit" mat-raised-button color="primary"
+                            [disabled]="formUser.invalid" class="mx-2">
+                            {{confirmButtonText}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

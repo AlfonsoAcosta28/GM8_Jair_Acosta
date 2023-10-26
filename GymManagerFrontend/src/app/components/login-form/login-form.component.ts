@@ -32,10 +32,10 @@ export class LoginFormComponent implements OnChanges {
   formUser!: FormGroup;
   defaultFields = {
     password: new FormControl('', Validators.required),
-    // firstName:new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
   };
   extraFields = {
+    // firstName:new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.required),
   };
   hasSession: boolean = false;
@@ -80,7 +80,7 @@ export class LoginFormComponent implements OnChanges {
     }
     this.formUser = this.fb.group(usersFields);
     if (this.dataUser) {
-      this.formUser.removeControl('password');
+      // this.formUser.removeControl('password');
       // this.formUser.removeControl('email');
     }
   }
