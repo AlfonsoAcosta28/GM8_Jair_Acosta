@@ -21,7 +21,6 @@ import { DeleteUserModule } from 'src/app/components/delete-user/delete-user.mod
     MaterialModule, 
     UserEditorModule,
     FormsModule,
-    UserEditorModule,
     UserEditorDModule,
     BasicCardModule,
     DeleteUserModule

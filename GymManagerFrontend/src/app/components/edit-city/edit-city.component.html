@@ -1,0 +1,28 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formUser" (ngSubmit)="responseForm()">
+                    
+                    <mat-form-field appearance="outline" class="col-md-12 mb-4">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" />
+                    </mat-form-field>
+                    
+                    <div class="d-flex justify-content-center">
+                        <!-- <button mat-raised-button class="col-md-6 mx-2" *ngIf="hasSession" (click)="cancelBtn()">Cancelar</button> -->
+                        <button type="submit" mat-raised-button color="primary"
+                            [disabled]="formUser.invalid" class="mx-2">
+                            {{confirmButtonText}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

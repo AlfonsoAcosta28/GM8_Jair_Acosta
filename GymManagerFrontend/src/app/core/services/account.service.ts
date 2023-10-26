@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, } from 'rxjs/operators';
-import { User, signIn } from '../interfaces/user';
+import { User, UserUpdate, signIn } from '../interfaces/user';
 import { ResponseArrayModel, ResponseModel } from '../interfaces/response-model';
 
 @Injectable({
@@ -46,14 +46,13 @@ export class AccountService {
 
   update(request: any, id: string): Observable<ResponseModel<any>> {
 
-    const transformedRequest = {
-      firstName: request.firstName,
-      lastName: request.lastName,
+    const transformedRequest:UserUpdate = {
+      userName: request.email,
       phoneNumber: request.phoneNumber,
-      status: true
+      password: request.password
     };
 
-    const url: string = `${this.urlBase}api/User/${id}`;
+    const url: string = `${this.urlBase}api/Users/${id}`;
     return <any>this.http.put<ResponseModel<any>>(url, transformedRequest, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
@@ -61,7 +60,7 @@ export class AccountService {
 
   delete(id: string): Observable<ResponseModel<any>> {
     // console.log('ID ',id)
-    const url: string = `${this.urlBase}api/User/${id}`;
+    const url: string = `${this.urlBase}api/Users/${id}`;
     return <any>this.http.delete<ResponseModel<any>>(url, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }

@@ -1,0 +1,19 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete</h1>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body"> 
+          <div *ngIf="row" class="text-center">
+            <h2 class="mb-3"> {{row.name }}</h2>
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn btn-danger me-2" (click)="deleteElement()">Delete</button>
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>

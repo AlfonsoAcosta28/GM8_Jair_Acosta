@@ -1,0 +1,105 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Insert" #input />
+</mat-form-field>
+
+<button mat-stroked-button color="primary" class="mx-4" (click)="openNew()" >
+  {{ showTable ? "New Member" : "Show Table" }}
+</button>
+
+<div class="mat-elevation-z8" *ngIf="showTable; else showMember">
+  <table mat-table [dataSource]="dataSource" matSort aria-hidden="true">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="birthDay">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Birth Day</th>
+      <td mat-cell *matCellDef="let row">{{ row.birthDay }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="allowNewsLetter">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Allow News Letter
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.allowNewsLetter }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="registeredOn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Registered On</th>
+      <td mat-cell *matCellDef="let row">{{ row.registeredOn }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="membershipEnd">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Membership End</th>
+      <td mat-cell *matCellDef="let row">{{ row.membershipEnd }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+      <td mat-cell *matCellDef="let row">{{ row.city.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="membershipType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>MembershipType</th>
+      <td mat-cell *matCellDef="let row">{{ row.membershipType.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>EDIT</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="openModal(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>DELETE</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="warn" (click)="deleteElemente(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>
+
+<ng-template #showMember>
+  <app-edit-member
+    *ngIf="rowSelected || newElement"
+    [row]="rowSelected"
+    (closeModalEvent)="onCloseHandled($event)"
+  >
+  </app-edit-member>
+</ng-template>
+
+<app-delete-element *ngIf="deleteRowSelected" [rowMember]="deleteRowSelected"
+(closeModalEvent)="onCloseHandledDelete($event)">
+
+</app-delete-element>

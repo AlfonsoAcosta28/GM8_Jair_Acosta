@@ -8,15 +8,19 @@ export interface User {
     // status: boolean;
 }
 
+export interface UserUpdate {
+    id?:string;
+    password: string;
+    userName: string;
+    phoneNumber: string;
+}
 
 export interface signIn{
     userName: string;
     password: string;
 }
 
-export interface signUp{
 
-}
 
 export interface signResponse{
     message: string;

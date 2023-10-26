@@ -11,4 +11,9 @@ export class NavbarComponent {
   
   @Input() initHome!: boolean;
   @Input() home!: boolean;
+
+  doSomething()
+{
+
+}
 }

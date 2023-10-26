@@ -3,7 +3,8 @@
 
     <div class="row" *ngIf="isSignUp == true">
       
-    <!-- <mat-form-field appearance="outline" class="col-md-6 mb-4">
+    <!--
+       <mat-form-field appearance="outline" class="col-md-6 mb-4">
       <mat-label>Firt Name</mat-label>
       <input matInput placeholder="Insert your Name" formControlName="firstName">
     </mat-form-field>
@@ -20,12 +21,12 @@
     </div>
 
     <!-- Email input -->
-    <mat-form-field appearance="outline" class="col-md-12 mb-4" *ngIf="!dataUser">
+    <mat-form-field appearance="outline" class="col-md-12 mb-4">
       <mat-label>Email</mat-label>
       <input type="email" matInput placeholder="email@examle.com" formControlName="email">
     </mat-form-field>
     <!-- Password input -->
-    <mat-form-field appearance="outline" class="col-md-12 mb-4"  *ngIf="!dataUser">
+    <mat-form-field appearance="outline" class="col-md-12 mb-4" >
       <mat-label>Password</mat-label>
       <input type="password" matInput formControlName="password" >
     </mat-form-field>
