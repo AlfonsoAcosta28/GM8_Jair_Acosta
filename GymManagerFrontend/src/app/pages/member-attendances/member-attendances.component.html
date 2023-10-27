@@ -1,0 +1,20 @@
+<div id="element-to-export">
+    <h1 class="title">Attendances in the last month</h1>
+    <div style="display: block">
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+      >
+      </canvas>
+    </div>
+  
+  </div>
+    <div class="actions">
+      <button class="export-button" (click)="onExportClick()">
+        Export to PDF
+      </button>
+    </div>
+  

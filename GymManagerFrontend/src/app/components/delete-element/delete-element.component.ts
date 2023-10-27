@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import * as bootstrap from 'bootstrap';
+import { Attendance } from 'src/app/core/interfaces/attendance';
 import { City } from 'src/app/core/interfaces/city';
 import { EquipamentType } from 'src/app/core/interfaces/equipament-type';
 import { Member } from 'src/app/core/interfaces/member';
 import { MembershipTypes } from 'src/app/core/interfaces/membership-types';
 import { ResponseModel } from 'src/app/core/interfaces/response-model';
+import { AttendanceService } from 'src/app/core/services/attendance.service';
 import { CitiesService } from 'src/app/core/services/cities.service';
 import { EquipamentTypeService } from 'src/app/core/services/equipament-type.service';
 import { MembersService } from 'src/app/core/services/members.service';
@@ -22,6 +24,7 @@ export class DeleteElementComponent {
   @Input() rowMembershipType?: MembershipTypes;
   @Input() rowMember?: Member
   @Input() rowEquipmentType?:EquipamentType
+  @Input() rowAttendance?:Attendance
   @Output() closeModalEvent: EventEmitter<Object> = new EventEmitter<Object>()
   myModal!: bootstrap.Modal;
 
@@ -31,7 +34,8 @@ export class DeleteElementComponent {
     private _serviceMembershipType: MembershipTypesService,
     private alertS: SwalAlertService, 
     private _serviceMember: MembersService, 
-    private _serviceEquipmentype: EquipamentTypeService){
+    private _serviceEquipmentype: EquipamentTypeService, 
+    private _serviceAttendance:AttendanceService){
 
   }
   ngOnInit(): void {
@@ -45,6 +49,8 @@ export class DeleteElementComponent {
       this.row = this.rowMember
     }else if(this.rowEquipmentType){
       this.row = this.rowEquipmentType
+    }else if(this.rowAttendance){
+      this.row = this.rowAttendance
     }
   }
   deleteElement(){
@@ -59,6 +65,9 @@ export class DeleteElementComponent {
       }
       if(this.rowEquipmentType){
         this._serviceEquipmentype.delete(this.row.id).subscribe((resp)=>this.responseAction(resp))
+      }
+      if(this.rowAttendance){
+        this._serviceAttendance.delete(this.row.id).subscribe((resp)=>this.responseAction(resp))
       }
   }
   responseAction(resp: ResponseModel<any>){

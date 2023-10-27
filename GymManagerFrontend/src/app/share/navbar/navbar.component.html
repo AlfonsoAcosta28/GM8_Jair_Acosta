@@ -58,6 +58,11 @@
                 >Equipment Types</a
               >
             </button>
+            <button mat-menu-item>
+              <a class="dropdown-item" href="attendance"
+                >Attendance</a
+              >
+            </button>
           </mat-menu>
 
           <button [matMenuTriggerFor]="menuReports" class="btn btn-dark">
@@ -65,10 +70,10 @@
           </button>
           <mat-menu #menuReports="matMenu">
             <button mat-menu-item>
-              <a class="dropdown-item" href="#">New members</a>
+              <a class="dropdown-item" href="new-members">New members</a>
             </button>
             <button mat-menu-item>
-              <a class="dropdown-item" href="#">Member Assistance</a>
+              <a class="dropdown-item" href="members-attendances">Member Assistance</a>
             </button>
           </mat-menu>
         </div>

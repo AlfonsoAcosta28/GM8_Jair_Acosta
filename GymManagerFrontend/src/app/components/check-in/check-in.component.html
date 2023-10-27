@@ -1,0 +1,35 @@
+<div class="checIn">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>MEMBER</mat-label>
+        <input
+          type="text"
+          placeholder="Pick one"
+          aria-label="Member"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+          (keyup)="startTimer($event)"
+          
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let member of filteredOptions | async"
+            [value]="getName(member)"
+            (onSelectionChange)="optionSelected(member)"
+          >
+            {{ getName(member) }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  
+      <button
+        mat-stroked-button
+        color="primary"
+        class="mx-4"
+        (click)="attendance()"
+      >
+        Attendance
+      </button>
+    </form>
+  </div>

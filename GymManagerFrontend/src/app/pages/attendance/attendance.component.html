@@ -1,0 +1,82 @@
+<app-check-in (memberSelected)="handleMemberSelected($event)" [update]="updateCheckIn" (change)="updateCheckIn">
+
+</app-check-in>
+
+<!-- DIBUJAR LINEA -->
+<hr class="linea-azul" />
+
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Insert" #input />
+</mat-form-field>
+
+<!-- <button mat-stroked-button color="primary" class="mx-4" (click)="openNew()">
+    New City
+  </button> -->
+<!-- <button mat-stroked-button color="primary" class="mx-4" (click)="changeView()">
+    {{ showTable ? "Go to Card View" : "Go to Table View" }}
+  </button> -->
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort aria-hidden="true">
+    <ng-container matColumnDef="dateIn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date In</th>
+      <td mat-cell *matCellDef="let row">{{ row.dateIn }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOut">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Out</th>
+      <td mat-cell *matCellDef="let row">{{ row.dateIn }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="member">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Member</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.member.name + " " + row.member.lastName }}
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>EDIT</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="openModal(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>DELETE</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="warn" (click)="deleteElemente(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>
+
+<!-- <app-edit-city *ngIf="rowSelected || newElement"
+  [row]="rowSelected"
+  (closeModalEvent)="onCloseHandled($event)">
+
+  </app-edit-city> -->
+
+<app-delete-element
+  *ngIf="deleteRowSelected"
+  [rowAttendance]="deleteRowSelected"
+  (closeModalEvent)="onCloseHandled($event)"
+>
+</app-delete-element>
