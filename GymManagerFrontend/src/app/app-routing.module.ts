@@ -19,6 +19,9 @@ const routes: Routes = [
     { path: 'members', loadChildren: () => import('./pages/members/members.module').then(m => m.MembersModule) ,canActivate:[HasSessionGuard] },
     { path: 'membership-types', loadChildren: () => import('./pages/membership-types/membership-types.module').then(m => m.MembershipTypesModule) ,canActivate:[HasSessionGuard] },
     { path: 'equipament-type', loadChildren: () => import('./pages/equipament-type/equipament-type.module').then(m => m.EquipamentTypeModule) ,canActivate:[HasSessionGuard] },
+    { path: 'attendance', loadChildren: () => import('./pages/attendance/attendance.module').then(m => m.AttendanceModule) ,canActivate:[HasSessionGuard] },
+    { path: 'new-members', loadChildren: () => import('./pages/new-members/new-members.module').then(m => m.NewMembersModule) ,canActivate:[HasSessionGuard] },
+    { path: 'members-attendances', loadChildren: () => import('./pages/member-attendances/member-attendances.module').then(m => m.MemberAttendancesModule) ,canActivate:[HasSessionGuard] },
 
     { path: 'not-found', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
   ]},

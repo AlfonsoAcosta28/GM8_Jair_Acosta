@@ -2,6 +2,7 @@ import {
     HttpClient,
     HttpErrorResponse,
     HttpHeaders,
+    HttpParams,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
@@ -37,7 +38,18 @@ export class MembersService {
             .pipe(catchError(this.errorHandler));
     }
 
+    getAllCoincidences(text: string): Observable<ResponseArrayModel<Member>> {
+        let url: string = `${this.urlBase}api/Members/coincidences`;
+
+        const params = new HttpParams().set('text', text);
+    
+        return this.http
+          .get<ResponseArrayModel<Member>>(url, { headers: this.httpOptions.headers, params })
+          .pipe(catchError(this.errorHandler));
+      }
+
     add(element: Member): Observable<ResponseModel<any>> {
+        // console.log(element)
         let url: string = `${this.urlBase}api/Members`;
         return this.http
             .post<ResponseModel<any>>(url, element, this.httpOptions)

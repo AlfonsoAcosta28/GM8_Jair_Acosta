@@ -15,11 +15,11 @@ import { DeleteElementModule } from 'src/app/components/delete-element/delete-el
   ],
   imports: [
     CommonModule,
+    CitiesRoutingModule,
     MaterialModule,
     FormsModule,
-    CitiesRoutingModule,
-    EditCityModule,
-    DeleteElementModule
+    DeleteElementModule,
+    EditCityModule
   ]
 })
 export class CitiesModule { }

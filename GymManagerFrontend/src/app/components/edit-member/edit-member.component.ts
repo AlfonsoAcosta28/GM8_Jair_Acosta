@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 // import * as bootstrap from 'bootstrap';
 import { switchMap } from 'rxjs/operators';
+import { Attendance } from 'src/app/core/interfaces/attendance';
 import { City } from 'src/app/core/interfaces/city';
 import { Member } from 'src/app/core/interfaces/member';
 import { MembershipTypes } from 'src/app/core/interfaces/membership-types';
@@ -108,8 +109,21 @@ export class EditMemberComponent implements OnInit {
 
   private addMembership(response: any) {
 
+    
+    const model:Member = {
+      name: response.name,
+      lastName: response.lastName,
+      birthDay: '2023-10-27T00:21:47.931Z',
+      email: response.email,
+      allowNewsLetter: response.allowNewsLetter,
+      registeredOn: '2023-10-27T00:21:47.931Z',
+      membershipEnd: '',
+      cityId: response.cityId,
+      membershipTypeId: response.membershipTypeId
+    }
 
-    this._service.add(response).subscribe(
+    console.log(response)
+    this._service.add(model).subscribe(
       (resp) => {
         if (!resp.hasError) {
           this.close(true);
