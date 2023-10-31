@@ -46,6 +46,7 @@ export class EditMemberComponent implements OnInit {
     allowNewsLetter: new FormControl(false),
     cityId: new FormControl('', Validators.required),
     membershipTypeId: new FormControl('', Validators.required),
+    registeredOn: new FormControl('')
   };
 
   ngOnInit(): void {
@@ -93,7 +94,19 @@ export class EditMemberComponent implements OnInit {
   }
 
   private updateMembership(response: any, row: any) {
-    this._service.update(response, row.id).subscribe(
+    const model:Member = {
+      name: response.name,
+      lastName: response.lastName,
+      birthDay: response.birthDay,
+      email: response.email,
+      allowNewsLetter: response.allowNewsLetter,
+      registeredOn: response.registeredOn,
+      membershipEnd: response.membershipEnd,
+      cityId: response.cityId,
+      membershipTypeId: response.membershipTypeId
+    }
+    console.log("info ",model)
+    this._service.update(model, row.id).subscribe(
       (resp) => {
         if (!resp.hasError) {
           this.close(true);
@@ -108,21 +121,17 @@ export class EditMemberComponent implements OnInit {
   }
 
   private addMembership(response: any) {
-
-    
     const model:Member = {
       name: response.name,
       lastName: response.lastName,
-      birthDay: '2023-10-27T00:21:47.931Z',
+      birthDay: response.birthDay,
       email: response.email,
       allowNewsLetter: response.allowNewsLetter,
-      registeredOn: '2023-10-27T00:21:47.931Z',
-      membershipEnd: '',
+      registeredOn: new Date().toISOString(),
+      membershipEnd: response.membershipEnd,
       cityId: response.cityId,
       membershipTypeId: response.membershipTypeId
     }
-
-    console.log(response)
     this._service.add(model).subscribe(
       (resp) => {
         if (!resp.hasError) {

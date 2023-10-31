@@ -75,7 +75,7 @@ export class MembersComponent implements OnInit {
     this.subscription = this.accountService.getAll().subscribe((response) => {
       let model: MemberShow[] = [];
       let copy : MemberShow
-      response.model.forEach((element) => {
+      response.model.forEach(element => {
 
         copy = {
           id : element.id,
@@ -102,7 +102,7 @@ export class MembersComponent implements OnInit {
 
   openModal(row: Member) {
     this.rowSelected = this.data.filter((e) => e.id === row.id)[0];
-    console.log("Editar ",row)
+    // console.log("Editar ",row)
     this.changeView();
   }
 
