@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./init-layout.component.scss']
 })
 export class InitLayoutComponent {
-
+ 
+  
 }
