@@ -5,9 +5,6 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-// import * as bootstrap from 'bootstrap';
-import { switchMap } from 'rxjs/operators';
-import { Attendance } from 'src/app/core/interfaces/attendance';
 import { City } from 'src/app/core/interfaces/city';
 import { Member } from 'src/app/core/interfaces/member';
 import { MembershipTypes } from 'src/app/core/interfaces/membership-types';

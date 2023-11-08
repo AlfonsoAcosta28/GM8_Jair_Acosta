@@ -31,17 +31,15 @@ export class AccountService {
   }
 
   SingIn(request:signIn): Observable<ResponseModel<any>>{
-   
-    console.log("Respuesta ",request)
     
     let url : string = `${this.urlBase}api/Account`;
     return this.http.post<ResponseModel<any>>(url, request, this.httpOptions).pipe(catchError(this.errorHandler));    
   }
   
-  SingUp(request:User): Observable<ResponseModel<any>>{
+  SingUp(request:User): Observable<ResponseArrayModel<any>>{
     console.log(request)
     let url : string = `${this.urlBase}api/Users`;
-    return this.http.post<ResponseModel<any>>(url, request, this.httpOptions).pipe(catchError(this.errorHandler));    
+    return this.http.post<ResponseArrayModel<any>>(url, request, this.httpOptions).pipe(catchError(this.errorHandler));    
   }
 
   update(request: any, id: string): Observable<ResponseModel<any>> {

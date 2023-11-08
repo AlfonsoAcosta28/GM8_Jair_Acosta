@@ -24,15 +24,15 @@ export class SignInComponent {
       password: request.password
     };
     // console.log("Salida", request)
-    this.login.SingIn(resp).subscribe(respose =>{
+    this.login.SingIn(resp).subscribe(response =>{
     
-      if(respose.hasError){
+      if(response.hasError){
         this.alertS.errorAlert("Incorrect username and/or password")
         return
       }
-      if(respose.message === 'Authorized'){
+      if(response.message === 'Authorized'){
         // environment.hasSession = true
-        let session = {...respose.model, hasSession: true}
+        let session = {...response.model, hasSession: true}
         let objTemp = btoa(JSON.stringify(session))
 
         this.cookie.put('session', objTemp)

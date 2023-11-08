@@ -10,7 +10,6 @@ const routes: Routes = [
   {path: '', component: InitLayoutComponent, children:[
     { path: 'sign-in', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule) },
     { path: 'sign-up', loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpModule) },
-  
   ]},
   {path: '', component: AdminLayoutComponent, children:[
     { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), canActivate:[HasSessionGuard] },
@@ -22,7 +21,6 @@ const routes: Routes = [
     { path: 'attendance', loadChildren: () => import('./pages/attendance/attendance.module').then(m => m.AttendanceModule) ,canActivate:[HasSessionGuard] },
     { path: 'new-members', loadChildren: () => import('./pages/new-members/new-members.module').then(m => m.NewMembersModule) ,canActivate:[HasSessionGuard] },
     { path: 'members-attendances', loadChildren: () => import('./pages/member-attendances/member-attendances.module').then(m => m.MemberAttendancesModule) ,canActivate:[HasSessionGuard] },
-
     { path: 'not-found', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) },
   ]},
   {path: '', component: InitHomeComponent, children:[
